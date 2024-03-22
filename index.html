@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'
+    integrity='sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD' crossorigin='anonymous'>
+  <script id="debug-script" src="https://cdn.jsdelivr.net/gh/MickShannahan/style-debug@latest/debug.min.js"
+    defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="text-center fw-bold p-2">
+    <h1 class="text-light ">Header</h1>
+  </header>
+
+  <main class="container">
+    <section class="row">
+      <div class="col bg-success-subtle"><button class="btn btn-dark" onclick="harvestAlmonds()">Harvest</button></div>
+      <div id="almondsSupply" class="col bg-success text-light"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
