@@ -1,51 +1,138 @@
 console.log("🥜 go nuts")
+// SECTION global variables
+
 let almonds = 0
+
+let farm = {
+  harvestRate: 10,
+  shippingRate: 3,
+
+  seasonHarvest: 0,
+}
+
+let clickUpgrades = [
+  {
+    name: 'tractor',
+    price: 15,
+    quantity: 0,
+    multiplier: 1
+  },
+  {
+    name: 'truck',
+    price: 10,
+    quantity: 0,
+    multiplier: 1
+  }
+];
+
+let automaticUpgrades = [
+  {
+    name: 'bees',
+    price: 50,
+    quantity: 0,
+    multiplier: 20
+  },
+  {
+    name: 'trees',
+    price: 75,
+    quantity: 0,
+    multiplier: 20
+  }
+];
+
 updateStats()
+
 
 // SECTION player action
 function harvestAlmonds() {
   almonds += 10
-  console.log('🧑‍🌾 ', almonds)
   updateStats()
 }
 
 // SECTION modifiers
 
+function upgradePerClick(resource) {
+  // truck and tractor
+  console.log('bigger shipments')
+  farm.shippingRate += 2
+  console.log('🚛 shipping rate ', farm.shippingRate)
+  farm.resource += 1
+
+  updateStats()
+}
+
+
+
+function upgradePerInt(resource) {
+
+  let newUpgrade = automaticUpgrades.find(upgrade => upgrade.name == resource)
+  console.log("upgrade: ", resource)
+
+  if (almonds > 25) {
+    newUpgrade.quantity += 1,
+      almonds -= 25
+  } else {
+    console.log("didn't upgrade ", resource)
+  }
+
+  updateStats()
+}
+
+
+
+
+// function upgradeHarvest(resource) {
+//   console.log('harvest more')
+//   farm.harvestRate += 2
+
+//   updateStats()
+// }
+
+
 function updateStats() {
   drawAlmondsSupply()
-  drawUpgrade1()
-  drawAmountToHarvest()
-  drawAmountToShip()
+  drawShippingRate()
+  drawHarvestRate()
   drawSeasonHarvest()
+
+
+  // document.getElementById(stat).innerText = '1'
+
 }
 
 
 // SECTION diplay
 function drawAlmondsSupply() {
-  console.log('almondsSupply')
   document.getElementById('almondsSupply').innerHTML = `<h2>${almonds}</h2>`
 }
 
-function drawUpgrade1() {
-  console.log('🚜 🚛 🐝 🌳 upgrade purchased')
+function drawShippingRate() {
+  // console.log('🚜 🚛 shipping upgrade purchased')
+  document.getElementById('shipping-rate').innerHTML = `<h2>${farm.shippingRate}</h2>`
   // bees and trees increase amount per interval (for stretch, could also speed up the interval at milestones); tractors and trucks increase amount per click
 }
 
-function drawAmountToHarvest() { }
+function drawHarvestRate() {
+  // console.log('🐝 🌳 harvest upgrade purchased');
+  document.getElementById('harvest-rate').innerHTML = `<h2>${farm.harvestRate}</h2>`
+}
 
-function drawAmountToShip() { }
 
-function drawSeasonHarvest() { }
+function drawSeasonHarvest() {
+  // console.log('📦📦📦 season harvest');
+  document.getElementById('season').innerHTML = `<h5>Season Total: ${farm.seasonHarvest}</h5>`
+}
 
 
 // SECTION interval
-function startGame() {
-  // hideOverlay(){}
-  // updateAll()
-  // let harvestInterval = setInterval(harvestAlmonds, 3000)
+/* function startGame() {
+  hideOverlay(){}
+  updateAll()
+  let harvestInterval = setInterval(harvestAlmonds, 3000)
 }
+*/
 
-/*
+/* stretch
 function displayBadge1(){}
 unlocked at milestones like boss levelups
 
@@ -57,24 +144,6 @@ add/remove d-none — they will float over play area, with justify-content-aroun
 
 
 
-
-let clickUpgrades = [
-  {
-    name: 'pickaxe',
-    price: 100,
-    quantity: 0,
-    multiplier: 1
-  }
-];
-
-let automaticUpgrades = [
-  {
-    name: 'rover',
-    price: 600,
-    quantity: 0,
-    multiplier: 20
-  }
-];
 
 
 /*!SECTION

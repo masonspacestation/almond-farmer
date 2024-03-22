@@ -14,17 +14,57 @@
 </head>
 
 <body>
-  <header class="text-center fw-bold p-2">
+  <!-- <header class="text-center fw-bold p-2">
     <h1 class="text-light ">Header</h1>
-  </header>
+  </header> -->
 
-  <main class="container">
-    <section class="row">
-      <div class="col bg-success-subtle"><button class="btn btn-dark" onclick="harvestAlmonds()">Harvest</button></div>
-      <div id="almondsSupply" class="col bg-success text-light"></div>
+  <main class="container-fluid">
+
+    <!-- SECTION rate and harvest display -->
+    <section class="row justify-content-center mt-5 pt-3">
+      <div id="season" class="col-3">season</div>
+    </section>
+    <section class="row justify-content-center align-content-end">
+      <div class="col-3">
+        <h3 id="harvest-rate">hrate</h3>
+      </div>
+      <div id="almondsSupply" class="col-4 bg-success text-light"></div>
+      <div class="col-3">
+        <h3 id="shipping-rate">srate</h3>
+      </div>
+    </section>
+
+    <!-- SECTION play area -->
+    <section id="play-area" class="row bg-success-subtle justify-content-center align-content-center p-5">
+
+      <button class="btn btn-dark w-25" onclick="harvestAlmonds()">Harvest</button>
+    </section>
+
+    <!-- SECTION upgrade buttons -->
+    <section id="upgrades-available" class="row bg-success-subtle justify-content-around p-5 pb-2">
+      <button class="btn btn-outline-success col-2" onclick="upgradePerClick('tractor')">+ 🚜</button>
+      <button class="btn btn-outline-success col-2" onclick="upgradePerClick('truck')">+ 🚛</button>
+      <button class="btn btn-outline-success col-2" onclick="upgradePerInt('bees')">+ 🐝</button>
+      <button class="btn btn-outline-success col-2" onclick="upgradePerInt('trees')">+ 🌳</button>
+    </section>
+
+    <!-- SECTION stats display -->
+    <section id="upgrades-purchased" class="row bg-info">
+      <div class="col-4 btn-outline-dark">
+        <h5>Rate Upgrades</h5>
+        <div id="draw-tractors" class="col-3">tractors</div>
+        <div id="draw-truck" class="col-3">truck</div>
+      </div>
+      <div class="col-4 btn-outline-dark">
+        <h5>Interval Upgrades</h5>
+        <div id="draw-tractors" class="col-3">bees</div>
+        <div id="draw-bees" class="col-3">trees</div>
+      </div>
+
+
+      </div>
     </section>
   </main>
-
   <script src="app.js"></script>
 </body>
 

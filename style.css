@@ -2,6 +2,10 @@ body {
   background-color: blanchedalmond;
 }
 
-header {
+/* header {
   background-color: darkolivegreen;
+} */
+
+#upgrades-available {
+  min-height: 10dvh;
 }
