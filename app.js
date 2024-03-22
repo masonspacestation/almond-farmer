@@ -12,13 +12,13 @@ let farm = {
 
 let clickUpgrades = [
   {
-    name: 'tractor',
+    name: 'tractors',
     price: 15,
     quantity: 0,
     multiplier: 1
   },
   {
-    name: 'truck',
+    name: 'trucks',
     price: 10,
     quantity: 0,
     multiplier: 1
@@ -52,40 +52,41 @@ function harvestAlmonds() {
 // SECTION modifiers
 
 function upgradePerClick(resource) {
-  // truck and tractor
-  console.log('bigger shipments')
-  farm.shippingRate += 2
-  console.log('🚛 shipping rate ', farm.shippingRate)
-  farm.resource += 1
-
-  updateStats()
-}
-
-
-
-function upgradePerInt(resource) {
-
-  let newUpgrade = automaticUpgrades.find(upgrade => upgrade.name == resource)
+  // trucks and tractors
+  let clickUpgrade = clickUpgrades.find(upgrade => upgrade.name == resource)
   console.log("upgrade: ", resource)
 
   if (almonds > 25) {
-    newUpgrade.quantity += 1,
+    clickUpgrade.quantity += 1,
       almonds -= 25
   } else {
     console.log("didn't upgrade ", resource)
   }
-
+  (farm.harvestRate * 1.2).toFixed(0)
+  document.getElementById(`draw-${clickUpgrade.name}`).innerHTML = `<h2>${clickUpgrade.quantity}</h2>`
   updateStats()
 }
 
 
+function upgradePerInt(resource) {
 
+  let intUpgrade = automaticUpgrades.find(upgrade => upgrade.name == resource)
+  console.log("upgrade: ", resource)
 
-// function upgradeHarvest(resource) {
-//   console.log('harvest more')
-//   farm.harvestRate += 2
+  if (almonds > 25) {
+    intUpgrade.quantity += 1,
+      almonds -= 25
+  } else {
+    console.log("didn't upgrade ", resource)
+  }
+  (farm.shippingRate * 1.2).toFixed(0)
+  document.getElementById(`draw-${intUpgrade.name}`).innerHTML = `<h2>${intUpgrade.quantity}</h2>`
+  updateStats()
+}
 
-//   updateStats()
+// function toggleButtons(){
+//   console.log("check buttons 1");
+// if(almonds >)
 // }
 
 
@@ -95,6 +96,8 @@ function updateStats() {
   drawHarvestRate()
   drawSeasonHarvest()
 
+  // toggleButtons()
+
 
   // document.getElementById(stat).innerText = '1'
 
@@ -102,6 +105,8 @@ function updateStats() {
 
 
 // SECTION diplay
+
+
 function drawAlmondsSupply() {
   document.getElementById('almondsSupply').innerHTML = `<h2>${almonds}</h2>`
 }
@@ -114,7 +119,7 @@ function drawShippingRate() {
 
 function drawHarvestRate() {
   // console.log('🐝 🌳 harvest upgrade purchased');
-  document.getElementById('harvest-rate').innerHTML = `<h2>${farm.harvestRate}</h2>`
+  document.getElementById('harvest-rate').innerHTML = `<h2>${(farm.harvestRate).toFixed(0)}</h2>`
 }
 
 
@@ -125,12 +130,14 @@ function drawSeasonHarvest() {
 
 
 // SECTION interval
-/* function startGame() {
-  hideOverlay(){}
-  updateAll()
-  let harvestInterval = setInterval(harvestAlmonds, 3000)
+function startGame() {
+
+  document.getElementById('start-card').classList.add('d-none')
+  // startCardElem.innerHTML = `<h5>Season Total: ${farm.seasonHarvest}</h5>`
+
 }
-*/
+
+// let harvestInterval = setInterval(harvestAlmonds, 3000)
 
 /* stretch
 function displayBadge1(){}
