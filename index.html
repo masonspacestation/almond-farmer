@@ -22,7 +22,7 @@
 
     <!-- SECTION rate and harvest display -->
     <section class="row justify-content-center mt-5 pt-3">
-      <div id="season" class="col-3">season</div>
+      <div id="season" class="col-3">0</div>
     </section>
     <section class="row justify-content-center align-content-end">
       <div class="col-3">
@@ -40,18 +40,22 @@
       <button class="btn btn-dark w-25" onclick="harvestAlmonds()">Harvest</button>
     </section>
 
+
+
     <!-- SECTION upgrade buttons -->
     <section id="upgrades-available" class="row bg-success-subtle justify-content-around p-5 pb-2">
-      <button id="upgradeBtn1" class="btn btn-outline-success col-2" onclick="upgradePerClick('tractors')">+ 🚜</button>
-      <button id="upgradeBtn2" class="btn btn-outline-success col-2" onclick="upgradePerClick('trucks')">+ 🚛</button>
-      <button id="upgradeBtn3" class="btn btn-outline-success col-2" onclick="upgradePerInt('bees')">+ 🐝</button>
-      <button id="upgradeBtn4" class="btn btn-outline-success col-2" onclick="upgradePerInt('trees')">+ 🌳</button>
+      <button id="buy-tractors-btn" class="btn btn-outline-success col-2" onclick="upgradePerClick('tractors')">+
+        🚜</button>
+      <button id="buy-trucks-btn" class="btn btn-outline-success col-2" onclick="upgradePerClick('trucks')">+
+        🚛</button>
+      <button id="buy-bees-btn" class="btn btn-outline-success col-2" onclick="upgradePerInt('bees')">+ 🐝</button>
+      <button id="buy-trees-btn" class="btn btn-outline-success col-2" onclick="upgradePerInt('trees')">+ 🌳</button>
     </section>
 
     <!-- SECTION stats display -->
-    <section id="upgrades-purchased" class="row bg-info">
-      <div class="col-4 btn-outline-dark">
-        <h5>Rate Upgrades</h5>
+    <section id="upgrades-purchased" class="row justify-content-around bg-info p-3 rounded rounded-2 mx-5">
+      <div class="col-4 border rounded rounded-2 border-2 border-light inner-shadow">
+        <h5 class="mt-2">Click Upgrades</h5>
         <div id="draw-tractors" class="col-3">
           <h2>0</h2>
         </div>
@@ -59,17 +63,17 @@
           <h2>0</h2>
         </div>
       </div>
-      <div class="col-4 btn-outline-dark">
-        <h5>Interval Upgrades</h5>
-        <div id="draw-trees" class="col-3">
+      <div class="col-4 border rounded rounded-2 border-2 border-light inner-shadow">
+        <h5 class="mt-2">Interval Upgrades</h5>
+        <div id="draw-bees" class="col-3">
           <h2>0</h2>
         </div>
-        <div id="draw-bees" class="col-3">
+        <div id="draw-trees" class="col-3">
           <h2>0</h2>
         </div>
       </div>
     </section>
-    <section class="row">
+    <section class="row justify-content-center align-content-center mt-4">
       <div id="start-card" class="col-8 card bg-light shadow rounded rounded-2 p-5"><button
           class="btn btn-success rounded rounded-pill" onclick="startGame()">Start Game</button></div>
     </section>
